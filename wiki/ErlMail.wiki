@@ -3,7 +3,7 @@
 
 = Introduction =
 
-ErlMail is a set of mdules that is being worked into a full funcational email server written in Elang.
+ErlMail is a set of mdules that is being worked into a full functional email server written in Erlang.
 
 
 = Details =
