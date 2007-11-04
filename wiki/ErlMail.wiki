@@ -1,0 +1,9 @@
+#labels Featured
+#ErlMail Erlmail Mail Server
+
+= Introduction =
+
+ErlMail is a set of mdules that is being worked into a full funcational email server written in Elang.
+
+
+= Details =
