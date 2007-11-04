@@ -9,15 +9,15 @@ This is an ongoing list of items that I intend to work on to make ErlMail better
 = Details =
 
 ErlMail General To-Do List
-* Shutdown server in XX minutes
-* impliment change_code funcatios to load new code when needed
-* Check for access to config file on startup
-* check for access to message stores on startup
+ * Shutdown server in XX minutes
+ * impliment change_code funcatios to load new code when needed
+ * Check for access to config file on startup
+ * check for access to message stores on startup
 
 SMTPD To-Do List:
-* Create multiple respones on EHLO command using extentions
-* Impliment Relay controls and mail queue for sending mail
+ * Create multiple respones on EHLO command using extentions
+ * Impliment Relay controls and mail queue for sending mail
 
 IMAPD To-Do List
-* Make sure that the mailbox name is the same with and without the heirachy character on the end.
-* Look into simplifing the responses in the IMAPD_CMD file. Many of these have very simplar patterns
+ * Make sure that the mailbox name is the same with and without the heirachy character on the end.
+ * Look into simplifing the responses in the IMAPD_CMD file. Many of these have very simplar patterns
