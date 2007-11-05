@@ -1,5 +1,5 @@
 #labels Featured
-# ErlMail Erlmail Mail Server
+#summary ErlMail Erlmail Mail Server
 
 = Introduction =
 

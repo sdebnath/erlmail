@@ -1,5 +1,5 @@
 #labels Phase-Implementation,Featured
-# ErlMail todo list
+#summary ErlMail todo list
 
 = Introduction =
 
