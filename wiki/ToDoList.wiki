@@ -21,3 +21,8 @@ SMTPD To-Do List:
 IMAPD To-Do List
  * Make sure that the mailbox name is the same with and without the heirachy character on the end.
  * Look into simplifing the responses in the IMAPD_CMD file. Many of these have very simplar patterns
+ * Check status of imap_capbility_greeting setting in config file. Did not work last time it was tested
+ * Create a function that detects and remvoes doubles quotes on a string, but only if the are the first and last characters in the string
+ 
+MIME To-Do List
+ * Encode a series of #mime{} records into an email message
