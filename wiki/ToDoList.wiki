@@ -26,3 +26,4 @@ IMAPD To-Do List
  
 MIME To-Do List
  * Encode a series of #mime{} records into an email message
+ * Change header split command account for a \t after the :
