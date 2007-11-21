@@ -6,3 +6,4 @@
 This is a current listing of the status of IMAP commands and implimention notes to complete those commands.
 
 
+|| Command || State || RFC || ERLMail || Outlook Exp || Outlokk || iPhone || Thunderbird ||
