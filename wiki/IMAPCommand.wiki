@@ -5,11 +5,35 @@
 
 This is a current listing of the status of IMAP commands and implimention notes to complete those commands. The table below also has the status of testing with IMAP email clients that I intend the IMAP server to be compatible with.
 
+Key: X = Completed, N = Next Version, U = Untested, ? = In Progress/Status Unknown
+
 
 || Command      || State             || RFC || ERLMail || Outlook Exp || Outlook || iPhone || Thunderbird ||
-|| CAPABILITY   || Any State         || X   || X       ||
-|| NOOP         || Any State         ||     || X       ||
-|| LOGOUT       || Any State         || X   || X       ||
-|| STARTTLS     || Not Authenitcated ||     ||         ||
-|| AUTHENTICATE || Not Authenitcated ||     ||         ||
-|| LOGIN        || Not Authenitcated ||     || X       ||
+|| CAPABILITY   || Any State         || X   || X       || X           || U       || U      || U           ||
+|| NOOP         || Any State         ||     || X       || X           || U       || U      || U           ||
+|| LOGOUT       || Any State         || X   || X       || X           || U       || U      || U           ||
+|| STARTTLS     || Not Authenitcated || N   || N       || N           || N       || N      || N           ||
+|| AUTHENTICATE || Not Authenitcated || N   || N       || N           || N       || N      || N           ||
+|| LOGIN        || Not Authenitcated ||     || X       || X           || U       || U      || U           ||
+|| SELECT       || Authenticated     ||     || X       || X           || U       || U      || U           ||
+|| EXAMINE      || Authenticated     ||     || X       || U           || U       || U      || U           ||
+|| CREATE       || Authenticated     ||     || X       || X           || U       || U      || U           ||
+|| DELETE       || Authenticated     ||     || X       || X           || U       || U      || U           ||
+|| RENAME       || Authenticated     ||     || X       || X           || U       || U      || U           ||
+|| SUBSCRIBE    || Authenticated     || X   || X       || X           || U       || U      || U           ||
+|| UNSUBSCRIBE  || Authenticated     || X   || X       || X           || U       || U      || U           ||
+|| LIST         || Authenticated     ||     || X       || X           || U       || U      || U           ||
+|| LSUB         || Authenticated     ||     || X       || X           || U       || U      || U           ||
+|| STATUS       || Authenticated     || X   || X       || X           || U       || U      || U           ||
+|| APPEND       || Authenticated     || N   || N       || N           || N       || N      || N           ||
+|| CHECK        || Selected          || X   || X       || X           || X       || X      || X           ||
+|| CLOSE        || Selected          || X   || X       || U           || U       || U      || U           ||
+|| EXPUNGE      || Selected          || X   || X       || U           || U       || U      || U           ||
+|| SEARCH       || Selected          || N   || N       || N           || N       || N      || N           ||
+|| FETCH        || Selected          ||     ||         ||             ||         ||        ||             ||
+|| STORE        || Selected          || ?   || X       || U           || U       || U      || U           ||
+|| COPY         || Selected          || X   || X       || U           || U       || U      || U           ||
+|| UID - COPY   || Selected          ||     || ?       ||             ||         ||        ||             ||
+|| UID - FETCH  || Selected          ||     ||         ||             ||         ||        ||             ||
+|| UID - SEARCH || Selected          || N   || N       || N           || N       || N      || N           ||
+|| UID - STORE  || Selected          ||     || ?       ||             ||         ||        ||             ||
