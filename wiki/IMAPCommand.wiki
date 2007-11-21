@@ -1,4 +1,4 @@
-#labels Phase-Implementation,Featured
+#labels Featured
 #summary IMAP Server command status
 
 = Introduction =
@@ -37,3 +37,39 @@ Key: X = Completed, N = Next Version, U = Untested, ? = In Progress/Status Unkno
 || UID - FETCH  || Selected          ||     ||         ||             ||         ||        ||             ||
 || UID - SEARCH || Selected          || N   || N       || N           || N       || N      || N           ||
 || UID - STORE  || Selected          ||     || ?       ||             ||         ||        ||             ||
+
+
+Command RFC Complicance Notes:
+ * NOOP - need to store extra infomration to be send during NOOP
+ * SELECT - work on folder flag/permenantflag data storage
+ * CREATE - remove trailing hierachy chr
+ * CREATE - ensure parent folders
+ * CREATE - UIDVALIDITY
+ * CREATE - Check previosuly deleted folders with same name for MAX UID and other information
+ * DELETE - remove messages from folder and other clean up
+ * DELETE - check for \noselect flag; send error
+ * DELETE - check for sub folders; remove mail and set \noselect leave folder
+ * DELETE - maintain list of Max UID/UIDVALIDITY for deleted folders incase of recreation
+ * RENAME - rename sub-folders
+ * RENAME - CREATE and parent folders
+ * RENAME - maintain list of Max UID/UIDVALIDITY for renamed folders incase of recreation; like deleting a folder
+ * RENAME - INBOX special case. Move Mail, but do not delete INBOX. Leave subfolders alone
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
