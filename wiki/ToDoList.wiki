@@ -14,6 +14,7 @@ ErlMail General To-Do List
  * Check for access to config file on startup
  * check for access to message stores on startup
  * rework imapd_util:send to accept a list of #imap_resp{}'s. Create one message and send one response.
+ * move to_lower_atom/1 funcations into erlmail_util module and redirect funcations calls
 
 SMTPD To-Do List:
  * Create multiple respones on EHLO command using extentions
@@ -24,10 +25,14 @@ IMAPD To-Do List
  * Look into simplifing the responses in the IMAPD_CMD file. Many of these have very simplar patterns
  * Check status of imap_capbility_greeting setting in config file. Did not work last time it was tested
  * Create a function that detects and remvoes doubles quotes on a string, but only if the are the first and last characters in the string
+ * UID parse fails gracefully
+ * seq_to_list with wildcards
+ * lets send/? take a list of responses and send them all as one packet
  
 MIME To-Do List
  * Encode a series of #mime{} records into an email message
  * Change header split command account for a \t after the :
+ * get section based on position [];[0];[0,0] = root
 
 GEN_STORE
  * modify SELECT to access a #mailbox_store{} record and return the most current versin of that #mailbox_store{}. Refactor with new syntax.

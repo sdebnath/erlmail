@@ -54,6 +54,7 @@ Command RFC Complicance Notes:
  * RENAME - CREATE and parent folders
  * RENAME - maintain list of Max UID/UIDVALIDITY for renamed folders incase of recreation; like deleting a folder
  * RENAME - INBOX special case. Move Mail, but do not delete INBOX. Leave subfolders alone
+ * LIST - incorperate refences name into folder search
 
 
 
