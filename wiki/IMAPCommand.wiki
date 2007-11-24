@@ -14,7 +14,7 @@ Key: X = Completed, N = Next Version, U = Untested, ? = In Progress/Status Unkno
 || LOGOUT       || Any State         || X   || X       || X           || U       || U      || U           ||
 || STARTTLS     || Not Authenitcated || N   || N       || N           || N       || N      || N           ||
 || AUTHENTICATE || Not Authenitcated || N   || N       || N           || N       || N      || N           ||
-|| LOGIN        || Not Authenitcated ||     || X       || X           || U       || U      || U           ||
+|| LOGIN        || Not Authenitcated || X   || X       || X           || U       || U      || U           ||
 || SELECT       || Authenticated     ||     || X       || X           || U       || U      || U           ||
 || EXAMINE      || Authenticated     ||     || X       || U           || U       || U      || U           ||
 || CREATE       || Authenticated     ||     || X       || X           || U       || U      || U           ||

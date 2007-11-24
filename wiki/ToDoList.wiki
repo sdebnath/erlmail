@@ -10,10 +10,9 @@ This is an ongoing list of items that I intend to work on to make ErlMail better
 
 ErlMail General To-Do List
  * Shutdown server in XX minutes
- * impliment change_code funcatios to load new code when needed
+ * impliment change_code funcations to load new code when needed
  * Check for access to config file on startup
  * check for access to message stores on startup
- * rework imapd_util:send to accept a list of #imap_resp{}'s. Create one message and send one response.
  * move to_lower_atom/1 funcations into erlmail_util module and redirect funcations calls
 
 SMTPD To-Do List:
@@ -27,12 +26,11 @@ IMAPD To-Do List
  * Create a function that detects and remvoes doubles quotes on a string, but only if the are the first and last characters in the string
  * UID parse fails gracefully
  * seq_to_list with wildcards
- * lets send/? take a list of responses and send them all as one packet
  
 MIME To-Do List
- * Encode a series of #mime{} records into an email message
+ * Encode a tree of #mime{} records into an email message
  * Change header split command account for a \t after the :
  * get section based on position [];[0];[0,0] = root
 
 GEN_STORE
- * modify SELECT to access a #mailbox_store{} record and return the most current versin of that #mailbox_store{}. Refactor with new syntax.
+ * modify SELECT to access a #mailbox_store{} record and return the most current version of that #mailbox_store{}. Refactor with new syntax.
