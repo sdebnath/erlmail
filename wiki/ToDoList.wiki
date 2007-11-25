@@ -34,3 +34,4 @@ MIME To-Do List
 
 GEN_STORE
  * modify SELECT to access a #mailbox_store{} record and return the most current version of that #mailbox_store{}. Refactor with new syntax.
+ * add funcations for select, insert and update (maybe more) into gen_store that will take the state and determine the correct store adn then call the correct funcation from there.

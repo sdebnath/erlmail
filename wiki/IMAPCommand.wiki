@@ -36,7 +36,7 @@ Key: X = Completed, N = Next Version, U = Untested, ? = In Progress/Status Unkno
 || UID - COPY   || Selected          ||     || ?       ||             ||         ||        ||             ||
 || UID - FETCH  || Selected          ||     ||         ||             ||         ||        ||             ||
 || UID - SEARCH || Selected          || N   || N       || N           || N       || N      || N           ||
-|| UID - STORE  || Selected          ||     || ?       ||             ||         ||        ||             ||
+|| UID - STORE  || Selected          || ?   || X       || X           || U       || U      || U           ||
 
 
 Command RFC Complicance Notes:
