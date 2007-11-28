@@ -5,12 +5,12 @@
 
 This is a current listing of the status of IMAP commands and implimention notes to complete those commands. The table below also has the status of testing with IMAP email clients that I intend the IMAP server to be compatible with.
 
-Key: X = Completed, N = Next Version, U = Untested, ? = In Progress/Status Unknown
+Key: X = Completed, N = Next Version, U = Untested, P = In Progress, ? = Status Unknown
 
 
 || Command      || State             || RFC || ERLMail || Outlook Exp || Outlook || iPhone || Thunderbird ||
 || CAPABILITY   || Any State         || X   || X       || X           || U       || U      || U           ||
-|| NOOP         || Any State         ||     || X       || X           || U       || U      || U           ||
+|| NOOP         || Any State         || X   || X       || X           || U       || U      || U           ||
 || LOGOUT       || Any State         || X   || X       || X           || U       || U      || U           ||
 || STARTTLS     || Not Authenitcated || N   || N       || N           || N       || N      || N           ||
 || AUTHENTICATE || Not Authenitcated || N   || N       || N           || N       || N      || N           ||
@@ -30,17 +30,17 @@ Key: X = Completed, N = Next Version, U = Untested, ? = In Progress/Status Unkno
 || CLOSE        || Selected          || X   || X       || U           || U       || U      || U           ||
 || EXPUNGE      || Selected          || X   || X       || U           || U       || U      || U           ||
 || SEARCH       || Selected          || N   || N       || N           || N       || N      || N           ||
-|| FETCH        || Selected          ||     ||         ||             ||         ||        ||             ||
-|| STORE        || Selected          || ?   || X       || U           || U       || U      || U           ||
+|| FETCH        || Selected          ||     || P       ||             ||         ||        ||             ||
+|| STORE        || Selected          || X   || X       || U           || U       || U      || U           ||
 || COPY         || Selected          || X   || X       || U           || U       || U      || U           ||
-|| UID - COPY   || Selected          ||     || ?       ||             ||         ||        ||             ||
-|| UID - FETCH  || Selected          ||     ||         ||             ||         ||        ||             ||
+|| UID - COPY   || Selected          || X   || X       || U           || U       || U      || U           ||
+|| UID - FETCH  || Selected          ||     || P       ||             ||         ||        ||             ||
 || UID - SEARCH || Selected          || N   || N       || N           || N       || N      || N           ||
-|| UID - STORE  || Selected          || ?   || X       || X           || U       || U      || U           ||
+|| UID - STORE  || Selected          || X   || X       || X           || U       || U      || U           ||
 
 
 Command RFC Complicance Notes:
- * NOOP - need to store extra infomration to be send during NOOP
+ * NOOP   - need to store extra infomration to be send during NOOP
  * SELECT - work on folder flag/permenantflag data storage
  * CREATE - remove trailing hierachy chr
  * CREATE - ensure parent folders
@@ -54,7 +54,7 @@ Command RFC Complicance Notes:
  * RENAME - CREATE and parent folders
  * RENAME - maintain list of Max UID/UIDVALIDITY for renamed folders incase of recreation; like deleting a folder
  * RENAME - INBOX special case. Move Mail, but do not delete INBOX. Leave subfolders alone
- * LIST - incorperate refences name into folder search
+ * LIST   - incorperate refences name into folder search
 
 
 

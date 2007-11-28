@@ -1,0 +1,31 @@
+#labels Featured
+#summary IMAP FETCH command status
+
+= Introduction =
+
+For anyone who has been follwing the project for very long you will know that I thinkt eh FETCH command is overly complicated and coudl have been separated into several commadns that would have made the IMAP protocol much easier to impliment. All ranting aside the FETCH command does what it needs to do very well aand the structure of the command is very effecient, once you understand what the implimenters where thinking whent he created the commands.
+
+
+
+== FETCH command implimentation status ==
+
+This is a current summary of the status of the FETCH commadn in ErlMail's IMAP server.
+
+Key: X = Completed, N = Next Version, U = Untested, P = In Progress, ? = Status Unknown
+
+|| FETCH Command || RFC || ErlMail || Outlook Express || Outlook || iPhone || Thunderbird ||
+|| ALL           || X   || X       || U               || U       || U      || U           ||
+|| FAST          || X   || X       || U               || U       || U      || U           ||
+|| FULL          || X   || X       || U               || U       || U      || U           ||
+|| BODY          ||     || P       ||                 ||         ||        ||             ||
+|| BODY[]<>      ||     || P       ||                 ||         ||        ||             ||
+|| BODY.PEEK[]<> ||     || P       ||                 ||         ||        ||             ||
+|| BODYSTRUCTURE ||     || P       ||                 ||         ||        ||             ||
+|| ENVELOPE      || X   || X       || X               || U       || U      || U           ||
+|| FLAGS         || X   || X       || X               || U       || U      || U           ||
+|| INTERNALDATE  || X   || X       || X               || U       || U      || U           ||
+|| RFC822        ||     || P       ||                 ||         ||        ||             ||
+|| RFC822.HEADER ||     || P       ||                 ||         ||        ||             ||
+|| RFC822.SIZE   || X   || X       || X               || U       || U      || U           ||
+|| RFC822.TEXT   ||     || P       ||                 ||         ||        ||             ||
+|| UID           || X   || X       || X               || U       || U      || U           ||
