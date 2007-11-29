@@ -1,5 +1,5 @@
 #labels 
-#summary IMAP SERACH command status
+#summary IMAP SEARCH command status
 
 = Introduction =
 
