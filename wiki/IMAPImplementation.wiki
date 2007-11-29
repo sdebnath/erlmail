@@ -1,0 +1,6 @@
+#labels 
+#summary IMAP Implimentation Notes
+
+= Introduction =
+
+This page is a place to keep track of implimention ideas and shortcomings of the ErlMail IMAP Server.

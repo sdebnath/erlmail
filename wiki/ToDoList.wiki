@@ -18,8 +18,14 @@ ErlMail General To-Do List
 SMTPD To-Do List:
  * Create multiple respones on EHLO command using extentions
  * Impliment Relay controls and mail queue for sending mail
+ 
+SMTPC:
+ * create way for sendmail funcation to do DNS lookup on hostname instead of requiring IP Address
+ * create way for sendmail funcaiton to do MX record lookup on email address
+ * create relay path for sending mail
 
 IMAPD To-Do List
+ * See [IMAPImplementation IMAP Implementation Notes]
  * Make sure that the mailbox name is the same with and without the heirachy character on the end.
  * Look into simplifing the responses in the IMAPD_CMD file. Many of these have very simplar patterns
  * Check status of imap_capbility_greeting setting in config file. Did not work last time it was tested
@@ -27,6 +33,7 @@ IMAPD To-Do List
  * UID parse fails gracefully
  * seq_to_list with wildcards
  * convert untagged messages to flow through #imapd_fsm.response. Attach new mail process through #imapd_fsm.response. Process all untagged messages on certain commands, especialy NOOP
+ * create an IMAPD_RESP or IMAPD_MAILBOX gen_server that will monitor actions on mailboxes and provide respones when satus is changed. This way when multiple clients have hte same mailbox open they can receive status changes. This will also allow for new messages to be devlivered by SMTP to trigger a response for the specific client.
  
 MIME To-Do List
  * Encode a tree of #mime{} records into an email message
