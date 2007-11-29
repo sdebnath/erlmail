@@ -3,4 +3,4 @@
 
 = Introduction =
 
-This page is a place to keep track of implimention ideas and shortcomings of the ErlMail IMAP Server.
+This page is a place to keep track of implimention ideas and shortcomings of the ErlMail IMAP Server. Most of these have been generated from reading RFC2683 IMAP Implementation Recomendations
