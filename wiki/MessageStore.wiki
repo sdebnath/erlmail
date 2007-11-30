@@ -1,0 +1,6 @@
+#labels 
+#summary !ErlMail Message Store
+
+= Introduction =
+
+The ErlMail message store is a modular message store that allows end users to create a store modules based on the [GenStore gen_store] behvior to impliment any message store backend.
