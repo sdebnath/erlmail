@@ -1,5 +1,4 @@
-#labels 
-#summary !ErlMail Message Store
+#summary ErlMail Message Store
 
 = Introduction =
 
