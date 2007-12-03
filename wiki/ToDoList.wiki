@@ -12,8 +12,8 @@ ErlMail General To-Do List
  * Shutdown server in XX minutes
  * impliment change_code funcations to load new code when needed
  * Check for access to config file on startup
- * check for access to message stores on startup
  * move to_lower_atom/1 funcations into erlmail_util module and redirect funcations calls
+ * create erlmail_app file that starts the correct servers and the message store; relocate message store startup from imapd_app
 
 SMTPD To-Do List:
  * Create multiple respones on EHLO command using extentions
@@ -40,6 +40,12 @@ MIME To-Do List
  * Change header split command account for a \t after the :
  * get section based on position [];[0];[0,0] = root
 
-GEN_STORE
+Message Store / GEN_STORE
+ * check for access to message stores on startup
  * modify SELECT to access a #mailbox_store{} record and return the most current version of that #mailbox_store{}. Refactor with new syntax.
  * add funcations for select, insert and update (maybe more) into gen_store that will take the state and determine the correct store aand then call the correct function from there. re-factor code to use gen_store:Funcaiont/2 instead of Store:Function/1
+
+
+
+
+

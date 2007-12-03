@@ -12,10 +12,10 @@ This allows for a client to receive messages about a mailbox that the client has
 
 The imap_resp mnesia table is a ram_copies table that is based on the imap_resp{} record. The table is setup as a type of bag to allow for multiple responses that have identical keys.
 
-When an IMAP response server connects to a group a mnesia servers it will look for an existing imap_resp table and copy it to the local node for faster processing. If no imap_resp table is found the node will create one. When a node is terminated it removes the copy of the imap_resp table; if the current node is the last node to hold the imap_resp table then the entire table is deleted.
+When an IMAP response server connects to a group a mnesia servers it will look for an existing imap_resp table and copies it to the local node for faster processing. If no imap_resp table is found the node will create one. When a node is terminated it removes the copy of the imap_resp table; if the current node is the last node to hold the imap_resp table then the entire table is deleted.
 
 === notes ===
 
 The imap_resp table should have a limit to the number of nodes that will create or join. This should be a setting in the config file that also allows for all servers to still join the table. By default 5 nodes should be able to join and if the setting is set to either infinity or 0 then all nodes will join.
 
-After a limit has been placed ont eh number of nodes that can join the imap_resp table there should be a way to notify when there are more nodes in the system and the limit has not been reached. This would happen when one node that had a local copy of the imap_resp table is removed from service.
+After a limit has been placed on the number of nodes that can join the imap_resp table there should be a way to notify when there are more nodes in the system and the limit has not been reached. This would happen when one node that had a local copy of the imap_resp table is removed from service.
