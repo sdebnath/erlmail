@@ -21,6 +21,48 @@ The gen_server that will be running the message store on each node will accept m
 
 == Interface ==
 
-The interface to teh message store will be a set of functions to get and set information on the message store. The local message store will process these functions and send messages to the correct message store that has the mailbox open. If the mailbox is not open, then the local message store will open the mailbox.
+The interface to the message store will be a set of functions to get and set information on the message store. The local message store will process these functions and send messages to the correct message store that has the mailbox open. If the mailbox is not open, then the local message store will open the mailbox.
 
 A mailbox should be in the open state on one node for the entire duration that the mailbox is in a selected state on any node. If a mailbox is opened on Node A and then set to active on node B, when the mailbox is closed by the client on node A the mailbox should remain open until the mailbox is also closed on node b.
+
+
+
+== design notes ==
+
+At this point I'm mostly thinking out loud while typing in thie entry. This will change dratmitcally before implimention.
+
+The message server will only have a mailbox open on one node. All other nodes intersted in the mailbox will mark it as active. Requests for information from the mailbox will be sent as a CALL to the open mailbox, no matter where the data is needed. The CALL is being used as most of these functions will need replies. This may change to a cast and impliemt an ETS table to track the request so taht they can be replied to later.
+
+The erlmail_store will have funcations exported that will allow all interaction with the store adn many funcations that will not be exported that will work with the internals of the message store and the other moduels that actaully impliment the message store logic. 
+
+Currently the design is to move much of the processing from the modules back into erlmail_store; this will make creating future store modules easier. This may be unreasonable, but it is acurrent design goal.
+
+
+
+=== non-blocking design ===
+
+Thinking out loud about [http://trapexit.org/Building_Non_Blocking_Erlang_apps TrapExit non-bocking app tutorial]
+
+We have two nodes; NodeA has the mailbox open, NodeB has the mailbox active. When NodeB want to perform any actions on the mailbox a CALL will be sent to NodeA. NodeA will reply with a NOREPLY immediately allowing more messages to be processed. Transaction ID and From information will be stored on NodeA to reply to the CALL statement once the data is complete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
