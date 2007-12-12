@@ -37,8 +37,9 @@ IMAPD To-Do List
  
 MIME To-Do List
  * Encode a tree of #mime{} records into an email message
- * Change header split command account for a \t after the :
+ * Change header split command account for a \t (and other whitespace) after the :
  * get section based on position [];[0];[0,0] = root
+ * work on encode/decode to allow for mutliple TO, CC and BCC to be presented as a list of address strings
 
 Message Store / GEN_STORE
  * check for access to message stores on startup

@@ -1,0 +1,21 @@
+#summary ErlMail Configuration settings
+
+= Introduction =
+
+ErlMail has several configurable settings that may be changed by the user using the standard OTP process for configuration. Please read the [http://www.erlang.org/doc/pdf/design_principles.pdf Design Principles] documentation and pay close attention to the section on 'Configuring an Application'.
+
+Each of the configurable parameters is setup as a tuple that looks like {Parameter, Value}. There are a few that ahve default values in the erlmail.app file thatis located in the ebin directory, some of them have have default values that are contained within the code. This is usually done to ensure that the paramter has a valid value even if the user does not give one.
+
+= Configuration Paramters =
+
+== server_list ==
+Default: [smtp,imap,pop]
+This parameter is used to list the servers that are going to potentially be started by ErlMail. This should NOT be overridden by the user.
+
+== server_smtp_start ==
+Default:false
+
+This parameter determines if the SMTP server will be started when the ErlMail application is started. The default is false; which will not start the SMTP server. This shoudl be overridden by the user by setting this value it true.
+
+
+
