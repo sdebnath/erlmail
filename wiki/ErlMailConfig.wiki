@@ -17,5 +17,40 @@ Default:false
 
 This parameter determines if the SMTP server will be started when the ErlMail application is started. The default is false; which will not start the SMTP server. This shoudl be overridden by the user by setting this value it true.
 
+== server_smtp_name ==
+Default: "smtp.erlsoft.net"
+
+This is the name the email server will use when identifying itself to other email servers. The user is encouraged to change this settings to something more meaning full to thier installation.
+
+== server_smtp_port ==
+Default: 25
+
+This is the TCP port that the server will intial start listening on.
+
+== server_smtp_max_connections ==
+Default: 25
+
+This is the maximum number of concurrent connections on an individual server node. This setting is not currently in use.
+
+== server_smtp_greeting ==
+Default: "ErlMail http://erlsoft.org (NO UCE)"
+
+This defines the text that the email server will present to a client when the clinet initally creates a conenction. Users are encouraged to change thsi to something more meaningful to htie rown isntallation.
 
 
+
+== server_imap_start ==
+Default:false
+
+This parameter determines if the IMAP4 server will be started when the ErlMail application is started. The default is false; which will not start the IMAP4 server. This shoudl be overridden by the user by setting this value it true.
+
+
+
+
+
+
+
+== server_pop_start ==
+Default:false
+
+This parameter determines if the POP# server will be started when the ErlMail application is started. The default is false; which will not start the POP3 server. This shoudl be overridden by the user by setting this value it true.
