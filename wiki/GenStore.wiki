@@ -1,4 +1,3 @@
-#labels
 #summary Generalize Store Behavior
 
 = Introduction =
@@ -13,4 +12,4 @@ After you have loaded ErlMail onto your Erlang server you can start to create yo
 -behavior(gen_store).
 }}}
 
-This will require you to have certain functions defined you your module that will implement the message store behavior. Since gen_store is still underdevelopment the functions required to create a message store are changing faster then it is reasonable to document them.
+This will require you to have certain functions defined for your module that will implement the message store behavior. Since gen_store is still under development the functions required to create a message store are changing faster than it is reasonable to document them.
