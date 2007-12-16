@@ -14,6 +14,8 @@ ErlMail General To-Do List
  * Check for access to config file on startup
  * move to_lower_atom/1 funcations into erlmail_util module and redirect funcations calls
  * create erlmail_app file that starts the correct servers and the message store; relocate message store startup from imapd_app
+ * move split_at/1-2 funcation to erlmail_util and remove other random refernces (imapd_util)
+ * move unquote/1 funcation to erlmail_util and remove otehr refernces (imapd_util)
 
 SMTPD To-Do List:
  * Create multiple respones on EHLO command using extentions
@@ -40,6 +42,7 @@ MIME To-Do List
  * Change header split command account for a \t (and other whitespace) after the :
  * get section based on position [];[0];[0,0] = root
  * work on encode/decode to allow for mutliple TO, CC and BCC to be presented as a list of address strings
+ * need funcation to split address list in To,CC,BCC fields so that the comma (,) is use only if not in double quotes (")
 
 Message Store / GEN_STORE
  * check for access to message stores on startup
