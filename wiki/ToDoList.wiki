@@ -36,6 +36,10 @@ IMAPD To-Do List
  * seq_to_list with wildcards
  * convert untagged messages to flow through #imapd_fsm.response. Attach new mail process through #imapd_fsm.response. Process all untagged messages on certain commands, especialy NOOP
  * create an IMAPD_RESP or IMAPD_MAILBOX gen_server that will monitor actions on mailboxes and provide respones when satus is changed. This way when multiple clients have hte same mailbox open they can receive status changes. This will also allow for new messages to be devlivered by SMTP to trigger a response for the specific client.
+ * Store UIDValidity for deleted fodlers inteh user store, under options upon deletion. Check the user store before creating a new folder for older references to the deleted folder. Increment the UIDValidy by 1 and remove reference once created.
+
+IMAPC To_Do list
+ * Check to see if encoding of fetch command properly encodes "1" vs [1] for the seq set
  
 MIME To-Do List
  * Encode a tree of #mime{} records into an email message
