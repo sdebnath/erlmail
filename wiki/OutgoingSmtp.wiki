@@ -15,4 +15,18 @@ A server process will be to be run to find out when message need to be sent or r
 
 A lock will need to be placed on a message as it is being sent by a sending process. This is to prevent another sending process on a differnet server from trying to send the same message. This will be crucial in a distributed enviroment with multiple outgoing SMTP servers.
 
-The message name in teh message store will be {MessagName,outgoing_smtp,#outgoing_smtp{}}. This follows the tuple with three elements for the name of the messages in the rest of the message store, it also allows for a unique atom of outgoing_smtp to easily find the messages in the message store and it has a way to keep informationa bout the last attempt, number of tries or any other infomration about the outgoing smtp process. 
+The message name in the message store will be {MessagName,#outgoing_smtp{},NextRetryTimeStamp}. This follows the tuple with three elements for the name of the messages in the rest of the message store, it also allows for a record of #outgoing_smtp{} to easily find the messages in the message store and it has a way to keep information about the last attempt, number of tries or any other infomration about the outgoing smtp process. Finally the NextRetryTimeStamp lets the servers easily filter the list to only message that need to be retried.
+
+== Process Overview ==
+
+ * modify SMTP server to allow message from known IP addresses even if they are not for any users on the system
+ * add message store funcation to insert message into outgoing queue
+ * create SMTP server process to control outgoing messages
+ * Integrate SMTP client into outgoing server process.
+ * modify messages in message store on failure: delete message with error message or update retry information
+
+== configuraiton settings == 
+
+ * server_smtp_relay_clients: Default [] or none. This setting allows users to set IP addresses that are used to relay email message through this SMTP server as an outgoign server. This is a list of tuples that are in teh form of {IP_Tuple,CIDR} or {{10,0,0,0},8}. Since the Default is [], by default the server is a closed relay and needs a configuraiton file to allow any IP addresses to send outgoing email.
+ * server_smtp_retries: Default 10. This is the number of retries the SMTP will attempt before failing the message
+ * server_smtp_retry_interval: Default [15,30,60,240]. This is a list of integers that is the number of minutes between each retry. The final retry interal in teh list will be used for any number of retries after the list is complete. By default the first retry is 15 minutes after the initial sending of the message. The second retry is 30 minutes after the first, the third is 60 minutes after the scond and the fouth is 240 mintes after the third. Since the default nubmer of retires is 10 each subsequent retry will be 240 minutes after the previos for a grand total of 1,785 minutes or 29.75 hours.
