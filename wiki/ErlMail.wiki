@@ -1,15 +1,15 @@
-#labels Featured
 #summary ErlMail Mail Server
+#labels Featured
 
 = Introduction =
 
-ErlMail is an ongoing project to create a complete RFC compiant Email server written in [http://www.erlang.org Erlang] using OTP best practices.
+ErlMail is an ongoing project to create a complete RFC compliant Email server written in [http://www.erlang.org Erlang] using OTP best practices.
 
 The main features (both functional and planned) of the ErlMail email server are:
 
  * OTP compliant SMTP server and client
  * OTP compliant IMAP server and client
  * OTP compliant POP server and client
- * Modular [MessageStore message store] that allows uses to create their own connection to any messaging backend
+ * Modular [MessageStore message store] that allows users to create their own connection to any messaging backend
 
 = Details =
