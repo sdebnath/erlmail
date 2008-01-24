@@ -20,6 +20,7 @@ ErlMail General To-Do List
 SMTPD To-Do List:
  * Create multiple respones on EHLO command using extentions
  * Impliment Relay controls and mail queue for sending mail
+ * rework command file to include errors for commands that are out of sequence.
  
 SMTPC:
  * create way for sendmail funcation to do DNS lookup on hostname instead of requiring IP Address

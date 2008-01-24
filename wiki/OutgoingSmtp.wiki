@@ -15,7 +15,7 @@ A server process will be to be run to find out when messages need to be sent or 
 
 A lock will need to be placed on a message as it is being sent by a sending process. This is to prevent another sending process on a different server from trying to send the same message. This will be crucial in a distributed environment with multiple outgoing SMTP servers.
 
-The message name in the message store will be {MessagName,#outgoing_smtp{},NextRetryTimeStamp}. This follows the tuple with three elements for the name of the messages in the rest of the message store, it also allows for a record of #outgoing_smtp{} to easily find the messages in the message store and it has a way to keep information about the last attempt, number of tries or any other information about the outgoing smtp process. Finally the NextRetryTimeStamp lets the servers easily filter the list to only message that need to be retried.
+The message name in the message store will be {MessageName,#outgoing_smtp{},NextRetryTimeStamp}. This follows the tuple with three elements for the name of the messages in the rest of the message store, it also allows for a record of #outgoing_smtp{} to easily find the messages in the message store and it has a way to keep information about the last attempt, number of tries or any other information about the outgoing smtp process. Finally the NextRetryTimeStamp lets the servers easily filter the list to only message that need to be retried.
 
 == Process Overview ==
 
@@ -31,3 +31,36 @@ The message name in the message store will be {MessagName,#outgoing_smtp{},NextR
  * server_smtp_retries: Default 10. This is the number of retries the SMTP will attempt before failing the message. A retry count of 0 will never retry the message and fail after the initial attempt.
  * server_smtp_retry_interval: Default [15,30,60,240]. This is a list of integers that is the number of minutes between each retry. The final retry interval in the list will be used for any number of retries after the list is complete. By default the first retry is 15 minutes after the initial sending of the message. The second retry is 30 minutes after the first, the third is 60 minutes after the second and the fourth is 240 minutes after the third. Since the default number of retires is 10 each subsequent retry will be 240 minutes after the previous for a grand total of 1,785 minutes or 29.75 hours.
  * server_stmp_failure_notification: default true. This setting allows the SMTP server to send email notifications on failure or success to the sender of the email message. If this is set to false no email notification will be generated.
+ 
+ 
+ 
+ 
+== Task List ==
+ * Create way to identify valid relay IP addresses through config files - done
+ * Check for valid relay IP address as the FSM is created - done
+ * add new code into RCPT to allow non-local addresses when relay = true
+ * add new code to store message in message store with relay information
+ * create smtpd_queue gen_server to check queue status on set basis
+ * use smtpd_queue server to send email via SMTPC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
