@@ -1,0 +1,102 @@
+Index: smtpc_fsm.erl
+===================================================================
+--- smtpc_fsm.erl	(revision 141)
++++ smtpc_fsm.erl	(working copy)
+@@ -65,8 +65,41 @@
+ %%% State functions
+ %%%----------------------------------------------------------------------
+ 	
++%%%----------------------------------------------------------------------
++%%% AUTH LOGIN Command
++%%%----------------------------------------------------------------------
++smtp_cmd(auth_login, From, State) ->
++    Msg = "AUTH LOGIN",
++    write(State#smtpc.socket, Msg),
++    case read(State#smtpc.socket) of
++	{334, Resp} -> 
++            gen_fsm:reply(From,{334,Resp}),
++	    {reply, ok, smtp_cmd, State#smtpc{state=mail}};
++	{Code, Resp} -> 
++		gen_fsm:reply(From,{Code,Resp}),
++	    {reply,ok,smtp_cmd, State};
++	Error -> 
++	    {stop, Error, [], []}
++    end;
+ 	
+ %%%----------------------------------------------------------------------
++%%% AUTH [credential] Command
++%%%----------------------------------------------------------------------
++smtp_cmd({auth_credential, Credential}, From, State)->
++    Msg = base64:encode_to_string(Credential),
++    write(State#smtpc.socket, Msg),
++    case read(State#smtpc.socket) of
++	{250, Resp} -> 
++		gen_fsm:reply(From,{250,Resp}),
++	    {reply,ok,smtp_cmd,State#smtpc{state=mail}};
++	{Code, Resp} -> 
++		gen_fsm:reply(From,{Code,Resp}),
++	    {reply,ok,smtp_cmd, State};
++	Error -> 
++	    {stop, Error, [], []}
++    end;
++
++%%%----------------------------------------------------------------------
+ %%% HELO Command
+ %%%----------------------------------------------------------------------
+ smtp_cmd({helo, Name}, From, State)->
+@@ -381,4 +414,4 @@
+ 		_      -> gen_tcp:send(Socket,Msg ++ ?CRLF)
+ 	end.
+ 
+-set_socket_opts(Socket) -> inet:setopts(Socket, [{active, once}, binary]).
+\ No newline at end of file
++set_socket_opts(Socket) -> inet:setopts(Socket, [{active, once}, binary]).
+Index: smtpc.erl
+===================================================================
+--- smtpc.erl	(revision 141)
++++ smtpc.erl	(working copy)
+@@ -39,7 +39,7 @@
+ 
+ -export([connect/1,help/1,noop/1,quit/1,rcpt/2,rset/1,vrfy/2]).
+ -export([connect/2,data/2,ehlo/2,etrn/2,expn/2,helo/2,mail/2]).
+--export([sendmail/4,sendmail/5,sendmail/6]).
++-export([sendmail/4,sendmail/5,sendmail/6,sendmail/8]).
+ 
+ %%-------------------------------------------------------------------------
+ %% @spec (IpAddress::term()) -> {ok,Pid::pid()} | {error,Reason::atom()}
+@@ -109,6 +109,19 @@
+ help(Pid) -> gen_fsm:sync_send_event(Pid, help).
+ 
+ %%--------------------------------------------------------------------
++%% Function: auth(Pid,Username,Password)
++%%           Pid = pid()
++%%           Username = String() - your mail server username
++%%           Password = String() - your mail server password
++%% Descrip.: Authenticates you with the mail server
++%% Returns : {Code,Response} - {250,String}
++%%--------------------------------------------------------------------
++auth(Pid,Username,Password) ->
++    gen_fsm:sync_send_event(Pid, auth_login),
++    gen_fsm:sync_send_event(Pid, {auth_credential, Username}),
++    gen_fsm:sync_send_event(Pid, {auth_credential, Password}).
++
++%%--------------------------------------------------------------------
+ %% Function: mail(Pid,From)
+ %%           Pid  = pid()
+ %%           From = String() - Address the email is from
+@@ -181,4 +194,13 @@
+ 	rcpt(Pid,To),
+ 	data(Pid,Message),
+ 	quit(Pid),
+-	ok.
+\ No newline at end of file
++	ok.
++sendmail(IPAddress,Port,Host,Username,Password,From,To,Message) ->
++        {ok,Pid} = connect(IPAddress,Port),
++        ehlo(Pid,Host),
++        auth(Pid,Username,Password),
++        mail(Pid,From),
++        rcpt(Pid,To),
++        data(Pid,Message),
++        quit(Pid),
++        ok.
